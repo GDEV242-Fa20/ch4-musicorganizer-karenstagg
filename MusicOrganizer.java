@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * A class to hold details of audio tracks.
@@ -59,6 +60,51 @@ public class MusicOrganizer
             System.out.println("Now playing: " + track.getArtist() + " - " + track.getTitle());
         }
     }
+    
+    /**
+     * Play a random track in the collection.
+     * 
+     */
+    public void playRandomTrack()
+    {
+        // Check to see if there are tracks
+        if (getNumberOfTracks() > 0)
+        {
+            //Create a Random object.
+            Random rand = new Random();
+            int trackNo = rand.nextInt(getNumberOfTracks());
+            playTrack(trackNo);
+        }    
+    }
+    
+    
+    /**
+     * Play each track randomly once from the entire collection.
+     * 
+     */
+    public void playRandomAll()
+    {
+        // Check to see if there are tracks
+        if (getNumberOfTracks() > 0)
+        {
+            //Create an object to copy the actual tracks list, so that 
+            //deletions can be made from the copy.
+            ArrayList<Track> tracks2 = new ArrayList<>(tracks);
+            
+            //Create a Random object to shuffle remaining tracks.
+            Random rand = new Random();
+            
+            //While there are tracks left to play:
+            while (tracks2.size() > 0)
+            {
+                int trackNo = rand.nextInt(tracks2.size());
+                Track playing = tracks2.get(trackNo);
+                player.playSample(playing.getFilename());
+                tracks2.remove(trackNo);
+            }           
+        }    
+    }
+    
     
     /**
      * Return the number of tracks in the collection.
