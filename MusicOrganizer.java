@@ -4,9 +4,11 @@ import java.util.Random;
 /**
  * A class to hold details of audio tracks.
  * Individual tracks may be played.
+ * Individual Random tracks and a full collection may also be 
+ * played randomly.
  * 
- * @author David J. Barnes and Michael Kölling
- * @version 2016.02.29
+ * @author Karen Stagg
+ * @version October 01, 2020
  */
 public class MusicOrganizer
 {
